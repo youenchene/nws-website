@@ -62,16 +62,6 @@ sources.assets = {
     dest: sources.roots.dist + '/assets'
 };
 
-/* ------------------------- *\
-    Root files
-\* ------------------------- */
-sources.rootFiles = {
-    src: [
-        sources.roots.src + '/*.*'
-    ],
-    dest: sources.roots.dist + '/'
-};
-
 // -------------------------
 
 module.exports = sources;
