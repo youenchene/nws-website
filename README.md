@@ -1,7 +1,7 @@
 # NUxDe Website
 ### Normandy UX Designers
 
-Website: [www.nuxde.com](www.nuxde.com)
+Website: [www.nuxde.com](http://www.nuxde.com)
 
 ## First install
 
