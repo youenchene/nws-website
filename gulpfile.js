@@ -74,7 +74,6 @@ gulp.task('watch:js', function () {
 \* ------------------------- */
 gulp.task('html', function () {
     return gulp.src(sources.html.src)
-        .pipe(gulp.dest(sources.html.dest))
         .pipe($.browserSync.stream());
 });
 
@@ -155,7 +154,7 @@ gulp.task('watch', ['build:ui', 'watch:less', 'watch:js', 'watch:html', 'watch:a
 gulp.task('serve', ['watch'], function() {
     $.browserSync.init({
         server: {
-            baseDir: sources.roots.dist
+            baseDir: './'
         }
     });
 });

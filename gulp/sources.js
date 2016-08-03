@@ -47,9 +47,9 @@ sources.js = {
 \* ------------------------- */
 sources.html = {
     src: [
-        sources.roots.src + '/html/**/*.html'
+        './**/*.html'
     ],
-    dest: sources.roots.dist + '/'
+    dest: './'
 };
 
 /* ------------------------- *\
