@@ -1,0 +1,45 @@
+// Long text
+// -------------------------
+.u-text-bw {
+  word-wrap: break-word;
+}
+
+.u-text-el {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+//Text alignment
+// -------------------------
+.u-text-align();
+
+@media only screen and (min-width: @mq-sm) {
+  .u-text-align(~'\@sm');
+}
+
+@media only screen and (min-width: @mq-md) {
+  .u-text-align(~'\@md');
+}
+
+@media only screen and (min-width: @mq-lg) {
+  .u-text-align(~'\@lg');
+}
+
+@media only screen and (min-width: @mq-xl) {
+  .u-text-align(~'\@xl');
+}
+
+.u-text-align (@suffix: ~'') {
+  .u-text-left@{suffix} {
+    text-align: left;
+  }
+
+  .u-text-center@{suffix} {
+    text-align: center;
+  }
+
+  .u-text-right@{suffix} {
+    text-align: right;
+  }
+}

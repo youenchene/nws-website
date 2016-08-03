@@ -1,0 +1,127 @@
+.g-make-col () {
+  .clearfix();
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  width: 100%;
+  text-align: left;
+  vertical-align: top;
+  font-size: 16px;
+  font-size: 1rem;
+  letter-spacing: normal;
+
+  &__inner {
+    position: relative;
+    width: 100%;
+  }
+
+  // Modifiers
+  // -------------------------
+  .grid-col-modifiers();
+
+  @media only screen and (min-width: @mq-sm) {
+    .grid-col-modifiers(~'\@sm');
+  }
+
+  @media only screen and (min-width: @mq-md) {
+    .grid-col-modifiers(~'\@md');
+  }
+
+  @media only screen and (min-width: @mq-lg) {
+    .grid-col-modifiers(~'\@lg');
+  }
+
+  @media only screen and (min-width: @mq-xl) {
+    .grid-col-modifiers(~'\@xl');
+  }
+
+  .grid-col-modifiers(@suffix: ~'') {
+
+    // Witdh modifiers
+    // -------------------------
+    &.as--1_8@{suffix} {
+      width: 12.5%;
+    }
+    &.as--1_7@{suffix} {
+      width: 14.2857142857%;
+    }
+    &.as--1_6@{suffix} {
+      width: 16.6666666666%;
+    }
+    &.as--1_5@{suffix} {
+      width: 20%;
+    }
+    &.as--1_4@{suffix},
+    &.as--2_8@{suffix} {
+      width: 25%;
+    }
+    &.as--2_7@{suffix} {
+      width: 28.5714285714%;
+    }
+    &.as--1_3@{suffix},
+    &.as--2_6@{suffix} {
+      width: 33.3333333333%;
+    }
+    &.as--3_8@{suffix} {
+      width: 37.5%;
+    }
+    &.as--2_5@{suffix} {
+      width: 40%;
+    }
+    &.as--3_7@{suffix} {
+      width: 42.8571428571%;
+    }
+    &.as--1_2@{suffix},
+    &.as--2_4@{suffix},
+    &.as--3_6@{suffix},
+    &.as--4_8@{suffix} {
+      width: 50%;
+    }
+    &.as--4_7@{suffix} {
+      width: 57.1428571428%;
+    }
+    &.as--3_5@{suffix} {
+      width: 60%;
+    }
+    &.as--5_8@{suffix} {
+      width: 62.5%;
+    }
+    &.as--2_3@{suffix},
+    &.as--4_6@{suffix} {
+      width: 66.6666666666%;
+    }
+    &.as--5_7@{suffix} {
+      width: 71.4285714285%;
+    }
+    &.as--3_4@{suffix},
+    &.as--6_8@{suffix} {
+      width: 75%;
+    }
+    &.as--4_5@{suffix} {
+      width: 80%;
+    }
+    &.as--5_6@{suffix} {
+      width: 83.3333333333%;
+    }
+    &.as--6_7@{suffix} {
+      width: 85.7142857142%;
+    }
+    &.as--7_8@{suffix} {
+      width: 87.5%;
+    }
+    &.as--1_1@{suffix},
+    &.as--2_2@{suffix},
+    &.as--3_3@{suffix},
+    &.as--4_4@{suffix},
+    &.as--5_5@{suffix},
+    &.as--6_6@{suffix},
+    &.as--7_7@{suffix},
+    &.as--8_8@{suffix} {
+      width: 100%;
+    }
+  }
+}
+
+.g-col {
+  .g-make-col();
+}
