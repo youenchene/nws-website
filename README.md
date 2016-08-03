@@ -5,13 +5,17 @@ Website: [www.nuxde.com](www.nuxde.com)
 
 ## First install
 
+### Install required NodeJS:
+
+[Install NodeJS](https://nodejs.org)
+
 ### Install required `gulp-cli` globally:
 
 ```
   $ npm install -g gulp-cli
 ```
 
-### Install local dependencies (install npm packages)
+### Install local dependencies at root of folder project:
 ```
   $ npm install
 ```
