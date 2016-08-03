@@ -1,31 +1,118 @@
-.o-button{
+.o-button {
+  .o-button-base ();
+}
+
+.o-button-base () {
   display: inline-block;
-  font-size: 16px;
+  margin: 0;
+  font-weight: normal;
+  font-family: @font-bold;
   text-align: center;
-  font-family: @font-regular;
-  padding: 0.75em 1em;
-  background: @color-primary;
-  border: 2px solid @color-primary;
-  border-radius: 2px;
-  color: #fff;
-  fill: #fff;
-
-  text-decoration: none;
+  vertical-align: middle;
+  touch-action: manipulation;
   cursor: pointer;
+  background-image: none;
+  border: 2px solid transparent;
+  border-radius: 2px;
+  white-space: normal;
   transition: .2s;
+  user-select: none;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, .2);
 
-  a:hover &,
-  a:focus &,
-  &:focus,
-  &:hover{
-    border-width: 2px;
-    background: darken(@color-primary, 5%);
-    border-color: darken(@color-primary, 5%);
-    color: #fff;
-    fill: #fff;
+
+  .o-button-variant(#fff; #666; #666);
+  .o-button-size(11px; 12px; @font-size-base; 1.4);
+
+  &,
+  &:active {
+    &:focus {
+      outline: thin dotted;
+      outline-offset: -2px;
+    }
+  }
+
+  &:active {
+    outline: 0;
+    background-image: none;
+  }
+}
+
+/* ------------------------- *\
+    Sizes
+\* ------------------------- */
+.o-button {
+  &.as--lg {
+    .o-button-size(8px; 18px; @font-size-large; 1.3333333);
+  }
+  &.as--sm {
+    .o-button-size(5px; 10px; @font-size-small; 1.5);
+  }
+  &.as--xs {
+    .o-button-size(1px; 5px; @font-size-small; 1.5);
   }
 
   &.as--block {
     display: block;
+    width: 100%;
+
+    & + & {
+      margin-top: 5px;
+    }
+  }
+}
+
+.o-button-size(@padding-vertical; @padding-horizontal; @font-size; @line-height) {
+  padding: @padding-vertical @padding-horizontal;
+  font-size: @font-size;
+  line-height: @line-height;
+}
+
+/* ------------------------- *\
+    Colors
+\* ------------------------- */
+.o-button-variant(@color; @background; @border) {
+  color: @color;
+  background-color: @background;
+  border-color: @border;
+
+  &:hover,
+  &:focus,
+  &.focus,
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    color: @color;
+    background-color: darken(@background, 10%);
+    border-color: darken(@border, 12%);
+  }
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    background-image: none;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &.focus,
+    &:active,
+    &.active {
+      background-color: @background;
+      border-color: @border;
+    }
+  }
+}
+
+.o-button {
+  &.as--primary {
+    .o-button-variant(#fff; @color-primary; @color-primary);
+  }
+  &.as--secondary {
+    .o-button-variant(#fff; @color-secondary; @color-secondary);
+  }
+  &.as--white {
+    .o-button-variant(@color-primary; #fff; #fff);
   }
 }
