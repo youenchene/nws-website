@@ -56,8 +56,20 @@ sources.html = {
     Assets
 \* ------------------------- */
 sources.assets = {
-  src: sources.roots.src + '/assets/**/*.*',
-  dest: sources.roots.dist + '/assets'
+    src: [
+        sources.roots.src + '/assets/**/*.*'
+    ],
+    dest: sources.roots.dist + '/assets'
+};
+
+/* ------------------------- *\
+    Root files
+\* ------------------------- */
+sources.rootFiles = {
+    src: [
+        sources.roots.src + '/*.*'
+    ],
+    dest: sources.roots.dist + '/'
 };
 
 // -------------------------

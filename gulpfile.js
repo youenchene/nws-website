@@ -33,7 +33,8 @@ gulp.task('less', function () {
         .pipe($.concat('app.css'))
         .pipe($.autoprefixer())
         .pipe($.if(!params.isProd, $.sourcemaps.write()))
-        .pipe(gulp.dest(sources.less.dest));
+        .pipe(gulp.dest(sources.less.dest))
+        .pipe($.browserSync.stream());
 });
 
 // Watch less
@@ -56,7 +57,8 @@ gulp.task('js', function () {
         .pipe($.concat('app.js'))
         .pipe($.if(params.isProd, $.uglify()))
         .pipe($.if(!params.isProd, $.sourcemaps.write()))
-        .pipe(gulp.dest(sources.js.dest));
+        .pipe(gulp.dest(sources.js.dest))
+        .pipe($.browserSync.stream());
 });
 
 // Watch js
@@ -72,7 +74,8 @@ gulp.task('watch:js', function () {
 \* ------------------------- */
 gulp.task('html', function () {
     return gulp.src(sources.html.src)
-        .pipe(gulp.dest(sources.html.dest));
+        .pipe(gulp.dest(sources.html.dest))
+        .pipe($.browserSync.stream());
 });
 
 // Watch html
@@ -88,7 +91,8 @@ gulp.task('watch:html', function () {
 \* ------------------------- */
 gulp.task('assets', function () {
     return gulp.src(sources.assets.src)
-        .pipe(gulp.dest(sources.assets.dest));
+        .pipe(gulp.dest(sources.assets.dest))
+        .pipe($.browserSync.stream());
 });
 
 // Watch assets
@@ -96,6 +100,23 @@ gulp.task('assets', function () {
 gulp.task('watch:assets', function () {
     $.watch(sources.assets.src, function() {
         gulp.start('assets');
+    });
+});
+
+/* ------------------------- *\
+    Copy root files
+\* ------------------------- */
+gulp.task('rootFiles', function () {
+    return gulp.src(sources.rootFiles.src)
+        .pipe(gulp.dest(sources.rootFiles.dest))
+        .pipe($.browserSync.stream());
+});
+
+// Watch rootFiles
+// -------------------------
+gulp.task('watch:rootFiles', function () {
+    $.watch(sources.rootFiles.src, function() {
+        gulp.start('rootFiles');
     });
 });
 
@@ -109,7 +130,7 @@ gulp.task('clean', function () {
 /* ------------------------- *\
     Build
 \* ------------------------- */
-gulp.task('build:ui', ['less', 'js', 'html', 'assets']);
+gulp.task('build:ui', ['less', 'js', 'html', 'assets', 'rootFiles']);
 gulp.task('default', ['clean'], function () {
     $.runSequence('build:ui', function () {
         var message = ' Successfully generated : ' + params.pkg.name + ' [v' + params.pkg.version + '] | High Five ! ';
@@ -125,4 +146,16 @@ gulp.task('default', ['clean'], function () {
 /* ------------------------- *\
     Watch
 \* ------------------------- */
-gulp.task('watch', ['build:ui', 'watch:less', 'watch:js', 'watch:html', 'watch:assets']);
+gulp.task('watch', ['build:ui', 'watch:less', 'watch:js', 'watch:html', 'watch:assets', 'watch:rootFiles']);
+
+
+/* ------------------------- *\
+    Serve
+\* ------------------------- */
+gulp.task('serve', ['watch'], function() {
+    $.browserSync.init({
+        server: {
+            baseDir: sources.roots.dist
+        }
+    });
+});
