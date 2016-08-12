@@ -15,7 +15,7 @@
     bottom: 0;
     background: url('../assets/images/home-bg-md.jpg') center center no-repeat;
     background-size: cover;
-    opacity: .2;
+    opacity: .15;
 
     @media only screen and (min-width: @mq-lg) {
       background-image: url('../assets/images/home-bg-lg.jpg');
@@ -25,9 +25,9 @@
   &__content {
     position: relative;
     z-index: 2;
-    width: 640px;
+    padding: 30px;
+    width: 1200px;
     max-width: 100%;
-    padding: 0 20px;
   }
 
   &__logo {
@@ -46,11 +46,43 @@
     }
   }
 
-  &__newsletter-form {
+  &__newsletter {
+    width: 640px;
+    max-width: 100%;
+    margin: 0 auto;
   }
 
   &__newsletter-item {
     display: inline-block;
     vertical-align: middle;
+  }
+
+  &__targets {
+    padding-top: 60px;
+  }
+
+  &__target {
+    position: relative;
+    letter-spacing: 1px;
+
+    &-icon {
+      top: 0;
+      left: 0;
+      position: absolute;
+      display: inline-block;
+      padding: 10px;
+      vertical-align: baseline;
+      margin-right: 5px;
+      background: #fff;
+      color: @color-primary;
+      border-radius: 100px;
+      font-size: 30px;
+      overflow: hidden;
+    }
+
+    &-icon + &-content {
+      padding-left: 80px;
+      padding-top: 20px;
+    }
   }
 }
